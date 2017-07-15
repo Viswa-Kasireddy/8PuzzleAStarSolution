@@ -60,46 +60,7 @@ public class EightPuzzleAstarSolver {
 	    }
 	    return LeastCostSuccessorN;
 	    }
-	String up (String CurrentBoard){
-        String ChangedBoard = "null";
-		   int spacePos = CurrentBoard.indexOf("0");
-		   if(spacePos>2){
-		     ChangedBoard = 
-			 CurrentBoard.substring(0,spacePos-3)+"0"+CurrentBoard.substring(spacePos-2,spacePos)+
-			 CurrentBoard.charAt(spacePos-3)+
-			 CurrentBoard.substring(spacePos+1);
-		   }
-		return ChangedBoard;
-	}
-	String down(String CurrentBoard){
-	    String ChangedBoard = "null";
-		int spacePos = CurrentBoard.indexOf("0");
-		if(spacePos<6){
-          ChangedBoard = 
-	      CurrentBoard.substring(0,spacePos)+CurrentBoard.substring(spacePos+3,spacePos+4)+
-	      CurrentBoard.substring(spacePos+1,spacePos+3)+"0"+
-          CurrentBoard.substring(spacePos+4);
-        }
-		return ChangedBoard;
-	}
-	String left(String CurrentBoard){
-		String ChangedBoard = "null";
-	     int spacePos = CurrentBoard.indexOf("0");
-    	 if (spacePos!=0 && spacePos!=3 && spacePos!=6){
-	         ChangedBoard = CurrentBoard.substring(0,spacePos-1)+"0"+CurrentBoard.charAt(spacePos-1)+
-	        		CurrentBoard.substring(spacePos+1);
-	     }
-    	 return ChangedBoard;
-	}
-	String right(String CurrentBoard){
-		 String ChangedBoard = "null";
-		     int spacePos = CurrentBoard.indexOf("0");
-	     if (spacePos!=2 && spacePos!=5 && spacePos!=8){
-	        ChangedBoard = CurrentBoard.substring(0,spacePos)+CurrentBoard.charAt(spacePos+1)+"0"+
-	        CurrentBoard.substring(spacePos+2);
-	     }
-	     return ChangedBoard;
-	}
+	
 	 
 	void heuristicCalc (String Successor, String CurrentBoard){
 		if (Successor != "null"){
@@ -235,5 +196,45 @@ public class EightPuzzleAstarSolver {
           SizeLCS = LeastCostSuccessorsN.size();
           recursiveCalc ();
         }
+	}
+	String up (String CurrentBoard){
+               String ChangedBoard = "null";
+		   int spacePos = CurrentBoard.indexOf("0");
+		   if(spacePos>2){
+		     ChangedBoard = 
+			 CurrentBoard.substring(0,spacePos-3)+"0"+CurrentBoard.substring(spacePos-2,spacePos)+
+			 CurrentBoard.charAt(spacePos-3)+
+			 CurrentBoard.substring(spacePos+1);
+		   }
+		return ChangedBoard;
+	}
+	String down(String CurrentBoard){
+	    String ChangedBoard = "null";
+		int spacePos = CurrentBoard.indexOf("0");
+		if(spacePos<6){
+          ChangedBoard = 
+	      CurrentBoard.substring(0,spacePos)+CurrentBoard.substring(spacePos+3,spacePos+4)+
+	      CurrentBoard.substring(spacePos+1,spacePos+3)+"0"+
+          CurrentBoard.substring(spacePos+4);
+        }
+		return ChangedBoard;
+	}
+	String left(String CurrentBoard){
+		String ChangedBoard = "null";
+	     int spacePos = CurrentBoard.indexOf("0");
+    	 if (spacePos!=0 && spacePos!=3 && spacePos!=6){
+	         ChangedBoard = CurrentBoard.substring(0,spacePos-1)+"0"+CurrentBoard.charAt(spacePos-1)+
+	        		CurrentBoard.substring(spacePos+1);
+	     }
+    	 return ChangedBoard;
+	}
+	String right(String CurrentBoard){
+		 String ChangedBoard = "null";
+		     int spacePos = CurrentBoard.indexOf("0");
+	     if (spacePos!=2 && spacePos!=5 && spacePos!=8){
+	        ChangedBoard = CurrentBoard.substring(0,spacePos)+CurrentBoard.charAt(spacePos+1)+"0"+
+	        CurrentBoard.substring(spacePos+2);
+	     }
+	     return ChangedBoard;
 	}
 }
